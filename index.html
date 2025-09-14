@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Orion Workroom (Lite)</title>
+  <link rel="stylesheet" href="/static/css/styles.css"/>
+  <!-- TradingView widget -->
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Orion Workroom (Lite)</div>
+    <div class="controls">
+      <input id="symbolInput" placeholder="Symbol (e.g., AAPL, NVDA)" />
+      <button id="loadBtn">Load</button>
+      <span class="status" id="wsStatus">WS: —</span>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="panel chart-panel">
+      <div id="tv_chart_container"></div>
+    </section>
+
+    <section class="panel tape-panel">
+      <h3>Time & Sales (Finnhub)</h3>
+      <div id="tape"></div>
+    </section>
+
+    <section class="panel quote-panel">
+      <h3>Quote</h3>
+      <div id="quoteBox">
+        <div><b>Symbol:</b> <span id="qSymbol"></span></div>
+        <div><b>Last:</b> <span id="qLast">—</span></div>
+        <div><b>Bid:</b> <span id="qBid">—</span></div>
+        <div><b>Ask:</b> <span id="qAsk">—</span></div>
+        <div><b>Volume:</b> <span id="qVol">—</span></div>
+      </div>
+      <p class="note">Use this to watch the live chart; place your orders in Thinkorswim on another device.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>Data via Finnhub WebSocket • Charts via TradingView widget. For paper/visual use only.</small>
+  </footer>
+
+  <script>
+    // Provide key & default from server
+    window.FINNHUB_KEY = "{{ finnhub_key }}";
+    window.DEFAULT_SYMBOL = "{{ default_symbol }}";
+  </script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
